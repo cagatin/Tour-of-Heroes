@@ -1,8 +1,8 @@
 <h2>My Heroes</h2>
-<ul>
+<ul class="heroes">
     <!-- use *ngFor (repeater directive) to iterate through list of heroes -->
     <li *ngFor="let hero of heroes">
-        <button type="button" (click)="onSelect(hero)">
+        <button [class.selected]="hero === selectedHero" type="button" (click)="onSelect(hero)">
             <span class="badge">{{hero.id}}</span>
             <span class="name">{{hero.name}}</span>
         </button>
