@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Hero } from '../hero';
 
 @Component({
   selector: 'app-heroes',
@@ -7,13 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HeroesComponent implements OnInit {
+  hero: Hero = {
+    id: 1,
+    name: 'Windstorm'
+  };
+
   constructor() { }
 
   // lifecycle hook.
   // Angular calls ngOnInit() after creating a component. 
   ngOnInit(): void {
   }
-
-  hero = 'Windstorm';
 
 }

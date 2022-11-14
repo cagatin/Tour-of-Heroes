@@ -1,3 +1,5 @@
+// This is where important meta data is stored
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -9,8 +11,10 @@ import { HeroesComponent } from './heroes/heroes.component';
     AppComponent,
     HeroesComponent
   ],
+  // imports array contains list of external modules that the application needs
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
