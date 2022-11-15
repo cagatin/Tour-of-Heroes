@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
 import { Observable, of } from 'rxjs';
+import { MessageService } from './message.service';
 
 // the @Injectable decorator marks the class as one that participates in the dependency injection system.
 // when the service is provided at the root level, Angular creates a single, shared instance of HeroService and injects it into any class
@@ -20,5 +21,5 @@ export class HeroService {
     return heroes;
   }
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 }
