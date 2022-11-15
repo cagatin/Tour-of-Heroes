@@ -21,8 +21,9 @@ export class HeroesComponent implements OnInit {
 
   // getter method to retrieve heroes from the HeroService
   getHeroes(): void {
-    // binds the Hero[] array to the result of calling herService.getHeroes();
-    this.heroes = this.heroService.getHeroes();
+    // this.heroService.getHeroes() --> returns Observable<Hero[]>
+    // Observable<Hero[]>.subscribe(heroes => this.heroes = heroes) --> passes the emitted heroes to the callback, which sets the component's heroes property. 
+    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
   }
 
   /* we add the heroService to the constructor to define a private heroService property
@@ -34,6 +35,7 @@ export class HeroesComponent implements OnInit {
   // lifecycle hook.
   // Angular calls ngOnInit() after creating a component. 
   ngOnInit(): void {
+    this.getHeroes();   // populate the Heroes array.
   }
 
 }
