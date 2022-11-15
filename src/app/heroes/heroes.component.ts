@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
-import { HEROES } from '../mock-heroes';
+import { HeroService } from '../hero.service';    // imports our Hero Service
 
 @Component({
   selector: 'app-heroes',  // will be invoked using <app-heroes> 
@@ -9,7 +9,7 @@ import { HEROES } from '../mock-heroes';
 })
 
 export class HeroesComponent implements OnInit {
-  heroes = HEROES;
+  heroes: Hero[] = [];
   selectedHero?: Hero;
 
   // Here, we define the click event that occurs on the HeroesComponent
@@ -18,7 +18,9 @@ export class HeroesComponent implements OnInit {
     this.selectedHero = hero;
   }
 
-  constructor() { }
+  // we add the heroService to the constructor to define a rpivate heroService property
+  // When angular creates a HeroComponent, the Dependency Injection system sets the heroService parameter to the singleton instance of HeroService
+  constructor(private heroService: HeroService) { }
 
   // lifecycle hook.
   // Angular calls ngOnInit() after creating a component. 
