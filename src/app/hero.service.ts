@@ -22,5 +22,9 @@ export class HeroService {
     return heroes;
   }
 
+  /* service-in-service scenerio.
+   * Here, we inject the MessageService into HeroService, 
+   * which is then injected into HeroesComponent.
+   */
   constructor(private messageService: MessageService) { }
 }
