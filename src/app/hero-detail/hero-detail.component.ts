@@ -7,7 +7,9 @@ import { Hero } from '../hero';
   styleUrls: ['./hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
+  // the Input() property is what enables data to be shared between parent-child components
   @Input() hero?: Hero;
+
   constructor() { }
 
   ngOnInit(): void {
