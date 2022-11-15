@@ -11,6 +11,7 @@ import { Observable, of } from 'rxjs';
 })
 
 // This HeroService class provides an injectable service
+// Services allow us to define code/functionalities that are accessible/reusable in many other components in our project.
 export class HeroService {
 
   // getter which returns an array of heroes
