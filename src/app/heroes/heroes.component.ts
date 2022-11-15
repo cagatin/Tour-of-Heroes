@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Hero } from '../hero';
-import { HeroService } from '../hero.service';    // imports our Hero Service
+import { HeroService } from '../hero.service';        // imports our Hero Service
+import { MessageService } from '../message.service';  // imports Message Service
 
 @Component({
   selector: 'app-heroes',  // will be invoked using <app-heroes> 
@@ -17,6 +19,7 @@ export class HeroesComponent implements OnInit {
    */
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+    this.messageService.add(`HeroesComponent: Selected hero id = ${hero.id}`);
   }
 
   // getter method to retrieve heroes from the HeroService
@@ -30,7 +33,7 @@ export class HeroesComponent implements OnInit {
    * this identifies it as a HeroService injection site.
    * When angular creates a HeroComponent, the Dependency Injection system sets the heroService parameter to the singleton instance of HeroService
    */
-  constructor(private heroService: HeroService) { }
+  constructor(private heroService: HeroService, private messageService: MessageService) { }
 
   // lifecycle hook.
   // Angular calls ngOnInit() after creating a component. 
