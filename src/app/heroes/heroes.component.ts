@@ -3,7 +3,7 @@ import { Hero } from '../hero';
 import { HEROES } from '../mock-heroes';
 
 @Component({
-  selector: 'app-heroes',
+  selector: 'app-heroes',  // will be invoked using <app-heroes> in the template
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css']
 })
