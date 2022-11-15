@@ -29,8 +29,8 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
   }
 
-  /* we add the heroService to the constructor to define a private heroService property
-   * this identifies it as a HeroService injection site.
+  /* we add the heroService and messageService to the constructor to define a private heroService property
+   * this identifies it as a HeroService/MessageService injection site.
    * When angular creates a HeroComponent, the Dependency Injection system sets the heroService parameter to the singleton instance of HeroService
    */
   constructor(private heroService: HeroService, private messageService: MessageService) { }
