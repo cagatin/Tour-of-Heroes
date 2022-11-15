@@ -8,15 +8,4 @@
         </button>
     </li>
 </ul>
-<!-- if selectedHero exists, this div will render -->
-<div *ngIf="selectedHero">
-    <h2>{{selectedHero.name | uppercase}} Details</h2>
-    <div>
-        id: {{selectedHero.id}}
-        <div>
-            <label for="hero-name">Hero Name: </label>
-            <!-- enables data to flow from the hero.name property to text box and vice versa (2 way binding)-->
-            <input type="text" id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
-        </div>
-    </div>
-</div>
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
