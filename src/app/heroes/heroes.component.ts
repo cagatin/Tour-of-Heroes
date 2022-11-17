@@ -12,15 +12,6 @@ import { MessageService } from '../message.service';  // imports Message Service
 
 export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
-  selectedHero?: Hero;
-
-  /* Here, we define the click event that occurs on the HeroesComponent
-   * When a hero is clicked, the selected hero is bound to the selectedHero method
-   */
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.messageService.add(`HeroesComponent: Selected hero id = ${hero.id}`);
-  }
 
   // getter method to retrieve heroes from the HeroService
   getHeroes(): void {
