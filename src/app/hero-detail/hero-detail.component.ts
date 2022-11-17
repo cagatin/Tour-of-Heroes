@@ -15,12 +15,19 @@ export class HeroDetailComponent implements OnInit {
 
   // Here, we injected ActivatedRoute, HeroService, and Location services into the constructor
   constructor(
-    private route: ActivatedRoute,
-    private heroService: HeroService,
-    private location: Location
+    private route: ActivatedRoute,        // holds information about the route tot his instance of HeroDetailComponent
+    private heroService: HeroService,     // gets hero date from the remote server
+    private location: Location            // angular service for interacting w the browser.
   ) { }
 
   ngOnInit(): void {
+    this.getHero();
+  }
+
+  getHero(): void {
+    // paramMap --> dictionary of route parameter values extracted from the URL.
+    const id = Number(this.route.snapshot.paramMap.get('id'));          // retrieve the route paramter id
+    this.heroService.getHero(id).subscribe(hero => this.hero = hero);
   }
 
 }
