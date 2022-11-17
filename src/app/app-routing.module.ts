@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
  * {path: 'string that matches URL of the path', component: <component that the router should create when navigating to the route>}
  */
 const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'heroes', component: HeroesComponent },
   { path: 'dashboard', component: DashboardComponent }
 ];
