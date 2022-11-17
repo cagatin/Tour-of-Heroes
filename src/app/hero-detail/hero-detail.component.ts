@@ -27,7 +27,12 @@ export class HeroDetailComponent implements OnInit {
   getHero(): void {
     // paramMap --> dictionary of route parameter values extracted from the URL.
     const id = Number(this.route.snapshot.paramMap.get('id'));          // retrieve the route paramter id
+
     this.heroService.getHero(id).subscribe(hero => this.hero = hero);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
