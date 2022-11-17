@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';             // importing routing capability
 import { HeroesComponent } from './heroes/heroes.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 /* Here, we specify the routes within the Routes[] array.
  * The Routes[] array tells the Router which view to display when a user clicks a link or pastes a URL into the address bar.
@@ -8,7 +9,8 @@ import { HeroesComponent } from './heroes/heroes.component';
  * {path: 'string that matches URL of the path', component: <component that the router should create when navigating to the route>}
  */
 const routes: Routes = [
-  { path: 'heroes', component: HeroesComponent }
+  { path: 'heroes', component: HeroesComponent },
+  { path: 'dashboard', component: DashboardComponent }
 ];
 
 // Metadata that initializes the router and starts it listening for browser location changes
