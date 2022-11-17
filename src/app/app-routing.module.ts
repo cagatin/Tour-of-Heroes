@@ -13,7 +13,7 @@ const routes: Routes = [
 
 // Metadata that initializes the router and starts it listening for browser location changes
 @NgModule({
-  // adds the RouterModule to the AppRoutingModule imports array and configures it w/ the routes by calling .forRoot() method.
+  // adds the RouterModule to the AppRoutingModule imports array and configures RouterModule w/ the routes by calling .forRoot() method.
   imports: [RouterModule.forRoot(routes)],
 
   // Exports the RouterModule to be available throughout the application.
