@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { IneMemoryDataService } from './in-memory-data.service';
+import { InMemoryDataService } from './in-memory-data.service';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
@@ -28,6 +28,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppRoutingModule,
     HttpClientModule,
     // Intercepts HTTP requests and returns simulated server responses.
+    // forRoot() takes takes an InMemoryDataService class that primes the in-memory database.
     HttpClientInMemoryWebApiModule.forRoot(
       IneMemoryDataService,
       { dataEncapsulation: false }
