@@ -22,6 +22,13 @@ export class HeroService {
     return heroes;
   }
 
+  // getter which returns a specified hero id
+  getHero(id: number): Observable<Hero> {
+    const hero = HEROES.find(h => h.id === id)!;
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    return of(hero);
+  }
+
   /* service-in-service scenerio.
    * Here, we inject the MessageService into HeroService, 
    * which is then injected into HeroesComponent.
