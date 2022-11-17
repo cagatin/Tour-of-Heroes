@@ -3,6 +3,7 @@ import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 // the @Injectable decorator marks the class as one that participates in the dependency injection system.
 // when the service is provided at the root level, Angular creates a single, shared instance of HeroService and injects it into any class
@@ -33,5 +34,13 @@ export class HeroService {
    * Here, we inject the MessageService into HeroService, 
    * which is then injected into HeroesComponent.
    */
-  constructor(private messageService: MessageService) { }
+  constructor(
+    private messageService: MessageService,
+    private http: HttpClient
+  ) { }
+
+  /** Log a HeroService message with the MessageService */
+  private log(message: string) {
+    this.messageService.add(`HeroService: ${message}`);
+  }
 }
