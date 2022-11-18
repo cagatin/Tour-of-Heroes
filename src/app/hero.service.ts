@@ -15,12 +15,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 // This HeroService class provides an injectable service
 // Services allow us to define code/functionalities that are accessible/reusable in many other components in our project.
 export class HeroService {
+  private heroesUrl = 'api/heroes';  // URL to web api
 
   // getter which returns an array of heroes
   getHeroes(): Observable<Hero[]> {
-    const heroes = of(HEROES);    // returns an Observable<Hero[]> that emits a single value (array of mock heroes).
-    this.messageService.add('HeroService: fetched heroes');
-    return heroes;
+    return this.http.get<Hero[]>(this.heroesUrl);
   }
 
   // getter which returns a specified hero id
