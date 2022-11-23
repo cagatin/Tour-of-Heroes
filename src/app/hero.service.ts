@@ -28,11 +28,13 @@ export class HeroService {
       );
   }
 
-  // getter which returns a specified hero id
+  // GET method which retrieves a Hero based on some ID.
   getHero(id: number): Observable<Hero> {
-    const hero = HEROES.find(h => h.id === id)!;
-    this.messageService.add(`HeroService: fetched hero id=${id}`);
-    return of(hero);
+    const url = `${this.heroesUrl}/${id}`;              // constructs a request URL w/ the desired hero's ID
+    return this.http.get<Hero>(url).pipe(               // server responds with a single hero based on ID
+      tap(_ => this.log(`fetched hero=${id}`)),         // .pipe() transforms data for display
+      catchError(this.handleError<Hero>(`getHero id]${id}`))
+    )
   }
 
   /* service-in-service scenerio.
