@@ -30,8 +30,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     // Intercepts HTTP requests and returns simulated server responses.
     // forRoot() takes takes an InMemoryDataService class that primes the in-memory database.
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService,
-      { dataEncapsulation: false }
+      InMemoryDataService, { dataEncapsulation: false }
     )
   ],
   providers: [],

@@ -17,6 +17,9 @@ import { catchError, map, tap } from 'rxjs/operators';
 // Services allow us to define code/functionalities that are accessible/reusable in many other components in our project.
 export class HeroService {
   private heroesUrl = 'api/heroes';  // URL to web api
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   // getter which returns an array of heroes
   getHeroes(): Observable<Hero[]> {
@@ -35,6 +38,18 @@ export class HeroService {
       tap(_ => this.log(`fetched hero=${id}`)),         // .pipe() transforms data for display
       catchError(this.handleError<Hero>(`getHero id]${id}`))
     )
+  }
+
+  // UPDATE method which updates a Hero's name 
+  updateHero(hero: Hero): Observable<any> {
+    return this.http.put(
+      this.heroesUrl,       // URL of hero
+      hero,                 // data to update (modified hero)
+      this.httpOptions      // Options
+    ).pipe(
+      tap(_ => this.log(`updated hero id=${hero.id}`)),
+      catchError(this.handleError<any>('updatedHero'))
+    );
   }
 
   /* service-in-service scenerio.
