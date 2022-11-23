@@ -28,7 +28,7 @@ export class HeroService {
       );
   }
 
-  // GET method which retrieves a Hero based on some ID.
+  // GET method which retrieves a specific Hero based on some ID.
   getHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;              // constructs a request URL w/ the desired hero's ID
     return this.http.get<Hero>(url).pipe(               // server responds with a single hero based on ID
