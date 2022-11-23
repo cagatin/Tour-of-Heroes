@@ -77,6 +77,23 @@ export class HeroService {
     );
   }
 
+  // Search for a Hero
+  searchHeroes(term: string): Observable<Hero[]> {
+    // if the search term is empty, return an empty hero array
+    if (!term.trim()) {
+      return of([]);
+    }
+
+    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`)
+      .pipe(
+        tap(x => x.length ?
+          this.log(`found heroes matching "${term}"`) :
+          this.log(`no heroes found matching "${term}`),
+        ),
+        catchError(this.handleError<Hero[]>('searchHeroes', []))
+      );
+  }
+
   /* service-in-service scenerio.
    * Here, we inject the MessageService into HeroService, 
    * which is then injected into HeroesComponent.
