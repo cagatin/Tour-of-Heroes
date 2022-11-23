@@ -31,7 +31,7 @@ export class HeroService {
       );
   }
 
-  // GET method which retrieves a specific Hero based on some ID.
+  // GET method which retrieves a specific Hero based on some ID - GET
   getHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;              // constructs a request URL w/ the desired hero's ID
     return this.http.get<Hero>(url).pipe(               // server responds with a single hero based on ID
@@ -40,7 +40,7 @@ export class HeroService {
     )
   }
 
-  // UPDATE method which updates a Hero's name 
+  // UPDATE method which updates a Hero's name - PUT
   updateHero(hero: Hero): Observable<any> {
     return this.http.put(
       this.heroesUrl,       // URL of hero
@@ -52,7 +52,17 @@ export class HeroService {
     );
   }
 
-  // ADD a new Hero 
+  // ADD a new Hero - POST
+  addHero(hero: Hero): Observable<Hero> {
+    return this.http.post<Hero>(
+      this.heroesUrl,
+      hero,
+      this.httpOptions
+    ).pipe(
+      tap((newHero: Hero) => this.log(`Added hero w/ id=${newHero.id}`)),
+      catchError(this.handleError<Hero>('addHero'))
+    );
+  }
 
   /* service-in-service scenerio.
    * Here, we inject the MessageService into HeroService, 
