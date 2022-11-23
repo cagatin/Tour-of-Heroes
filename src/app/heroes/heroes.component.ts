@@ -30,6 +30,12 @@ export class HeroesComponent implements OnInit {
       })
   }
 
+  // delete method which deletes a hero
+  delete(hero: Hero): void {
+    this.heroes = this.heroes.filter(h => h != hero);
+    this.heroService.deleteHero(hero.id).subscribe();
+  }
+
   /* we add the heroService and messageService to the constructor to define a private heroService property
    * this identifies it as a HeroService/MessageService injection site.
    * When angular creates a HeroComponent, the Dependency Injection system sets the heroService parameter to the singleton instance of HeroService
