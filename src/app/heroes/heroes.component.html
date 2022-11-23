@@ -1,4 +1,11 @@
 <h2>My Heroes</h2>
+<div>
+    <label for="new-hero">Hero Name: </label>
+    <input id="new-hero" #heroName />
+    <button type="button" class="add-button" (click)="add(heroName.value); heroName.value =''">
+        Add Hero
+    </button>
+</div>
 <ul class="heroes">
     <!-- use *ngFor (repeater directive) to iterate through list of heroes -->
     <li *ngFor="let hero of heroes">

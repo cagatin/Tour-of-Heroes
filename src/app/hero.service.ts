@@ -52,6 +52,8 @@ export class HeroService {
     );
   }
 
+  // ADD a new Hero 
+
   /* service-in-service scenerio.
    * Here, we inject the MessageService into HeroService, 
    * which is then injected into HeroesComponent.
