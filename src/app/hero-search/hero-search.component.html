@@ -3,7 +3,9 @@
     <input #searchBox id="search-box" (input)="search(searchBox.value)" />
 
     <ul class="search-result">
-        <label *ngFor="let heroes of heroes$ | async">
+        <!-- $ convention indicates heroes$ object is an Observable, not an array -->
+        <!-- We pipe |async to indefy AsyncPipe and subscribe to an Observable automatically. -->
+        <label *ngFor="let hero of heroes$ | async">
             <a routerLink="/detail/{{hero.id}}">
                 {{hero.name}}
             </a>
